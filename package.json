@@ -1,0 +1,44 @@
+{
+  "name": "niceplay",
+  "version": "0.0.0",
+  "description": "Open-source player.",
+  "main": "src/index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.igloo.be:niceplay/niceplay.git"
+  },
+  "keywords": [
+    "nice",
+    "player",
+    "open-source",
+    "video"
+  ],
+  "author": "iGLOO",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt-cli": "^0.1.13",
+    "jasmine-core": "^2.0.0",
+    "coffee-script": "^1.7.1",
+    "load-grunt-tasks": "^0.4.0",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-coffeelint": "0.0.10",
+    "grunt": "^0.4.4",
+    "grunt-node-webkit-builder": "^0.1.20"
+  },
+  "window": {
+    "toolbar": false,
+    "width": 800,
+    "height": 600
+  },
+  "dependencies": {
+    "video.js": "^4.5.2"
+  }
+}

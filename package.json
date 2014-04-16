@@ -22,7 +22,6 @@
   "author": "iGLOO",
   "license": "ISC",
   "devDependencies": {
-    "grunt-cli": "^0.1.13",
     "jasmine-core": "^2.0.0",
     "coffee-script": "^1.7.1",
     "load-grunt-tasks": "^0.4.0",

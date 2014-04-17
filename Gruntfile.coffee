@@ -4,10 +4,14 @@ module.exports = (grunt) ->
   # var buildPlatforms = parseBuildPlatforms(grunt.option('platforms'));
 
   grunt.initConfig
+    watch:
+      src:
+        files: ['src/**/*']
+        tasks: ['build:src']
+
     coffee:
       build:
         expand: true
-        flatten: true
         cwd: 'src'
         src: ['**/*.coffee']
         dest: 'lib'
@@ -16,11 +20,20 @@ module.exports = (grunt) ->
     copy:
       build:
         files: [
-          { expand: true, cwd: 'src', src: ['index.html'], dest: 'lib' }
+          { expand: true, cwd: 'src', src: ['index.html', 'package.json'], dest: 'lib' }
         ]
 
     clean:
       build: ['lib']
+
+    concurrent:
+      options:
+        logConcurrentOutput: true
+      dev: ['shell:nodewebkit', 'watch:src']
+
+    shell:
+      nodewebkit:
+        command: './build/cache/mac/0.9.2/node-webkit.app/Contents/MacOS/node-webkit --debug ./lib'
 
     nodewebkit:
       build:
@@ -35,7 +48,6 @@ module.exports = (grunt) ->
 
         src: [ # Your node-webkit app './**/*'
           './lib/**'
-          './package.json'
         ]
 
       dist:
@@ -52,7 +64,6 @@ module.exports = (grunt) ->
 
         src: [ # Your node-webkit app './**/*'
           './lib/**'
-          './package.json'
         ]
 
   # parseBuildPlatforms = (argumentPlatform) ->
@@ -73,18 +84,18 @@ module.exports = (grunt) ->
 
   #   return buildPlatforms
 
-  grunt.registerTask 'nodewkbuild', [
-    'nodewebkit:build'
+  grunt.registerTask 'build:src', [
+    'coffee:build'
+    'copy:build'
   ]
 
   grunt.registerTask 'build', [
     'clean:build'
-    'coffee:build'
-    'copy:build'
-    'nodewkbuild'
-    'clean:build'
+    'build:src'
+    'nodewebkit:build'
   ]
-  grunt.registerTask 'server', []
+
+  grunt.registerTask 'server', ['build:src', 'concurrent:dev']
   grunt.registerTask 'test', []
   grunt.registerTask 'default', [
     'server'

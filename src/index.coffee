@@ -1,3 +1,2 @@
 
-alert('works!')
-
+require './lib/debug/livereload'

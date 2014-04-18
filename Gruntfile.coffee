@@ -34,6 +34,9 @@ module.exports = (grunt) ->
     shell:
       nodewebkit:
         command: './build/cache/mac/0.9.2/node-webkit.app/Contents/MacOS/node-webkit --debug ./lib'
+        options:
+          stdout: true
+          stderr: true
 
     nodewebkit:
       build:

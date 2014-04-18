@@ -42,6 +42,8 @@
     "height": 600
   },
   "dependencies": {
+    "jquery": "^2.1.0",
+    "jwerty": "git://github.com/loicmahieu/jwerty",
     "video.js": "^4.5.2"
   }
 }

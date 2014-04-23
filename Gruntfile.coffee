@@ -164,7 +164,7 @@ module.exports = (grunt) ->
   #   return buildPlatforms
 
   grunt.registerTask 'check-node-webkit-build', ->
-    if !grunt.file.isDir 'build/cache/mac/0.9.2'
+    if !grunt.file.isDir('build/cache/mac/' + grunt.config.get('nodewebkit.build.options.version'))
       grunt.task.run ['build']
 
   grunt.registerTask 'build:src', [

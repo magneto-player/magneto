@@ -11,6 +11,7 @@ window.nw = global.nw =
 # Initialize application
 NicePlay = require './lib/niceplay'
 niceplay = new NicePlay()
-niceplay.initialize()
 
-global.require.cache['niceplay'] = niceplay
+global.niceplay = niceplay
+
+niceplay.initialize()

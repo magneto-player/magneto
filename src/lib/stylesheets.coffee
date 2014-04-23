@@ -7,7 +7,7 @@ class Stylesheets
   constructor: ->
     @$head = $ 'head'
 
-  append: (file) ->
+  require: (file) ->
     filepath = @resolveStylesheet(file)
 
     unless filepath

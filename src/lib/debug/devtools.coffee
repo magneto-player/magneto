@@ -1,8 +1,14 @@
-config = require('../../package.json')
 
-if config.debug
-  {jwerty} = require 'jwerty'
+module.exports = devtools =
+  initialize: ->
+    @showDevTools()
+    @listenKeyboardShortcut()
 
-  jwerty.key '⌘+alt+I', ->
-    console.log 'Devtools: open dev tools'
+  showDevTools: ->
     nw.gui.Window.get().showDevTools()
+
+  listenKeyboardShortcut: ->
+    {jwerty} = require 'jwerty'
+    jwerty.key '⌘+alt+I', ->
+      console.log 'Devtools: open dev tools'
+      devtools.showDevTools()

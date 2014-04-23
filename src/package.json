@@ -10,5 +10,6 @@
     "height": 600
   },
   "livereload": true,
-  "debug": true
+  "debug": true,
+  "js-flags": "--harmony-proxies --harmony_collections"
 }

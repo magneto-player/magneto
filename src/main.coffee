@@ -3,18 +3,14 @@
 # integration with browser side components.
 global.document = window.document
 global.navigator = window.navigator
+global.MediaLoader = window.MediaLoader
 window.nw = global.nw =
   gui: require('nw.gui')
 
 
-# Debugging
-require './lib/debug/livereload'
-require './lib/debug/devtools'
+# Initialize application
+NicePlay = require './lib/niceplay'
+niceplay = new NicePlay()
+niceplay.initialize()
 
-
-
-# Main
-$ = require 'jquery'
-
-$ ->
-  $('#time').text(new Date())
+global.require.cache['niceplay'] = niceplay

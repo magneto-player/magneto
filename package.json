@@ -42,8 +42,12 @@
     "height": 600
   },
   "dependencies": {
+    "emissary": "^1.2.1",
+    "fs-plus": "^2.2.2",
     "jquery": "^2.1.0",
     "jwerty": "git://github.com/loicmahieu/jwerty",
+    "space-pen": "^3.1.2",
+    "theorist": "^1.0.1",
     "video.js": "^4.5.2"
   }
 }

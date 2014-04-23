@@ -1,27 +1,37 @@
-config = require('../../package.json')
 
-if config.livereload
-  {Gaze} = require('gaze')
-  gaze = new Gaze('**/*')
-  doReload = false
+module.exports = livereload =
+  initialize: ->
+    @watchSources()
+    @listenKeyboardShortcut()
 
-  setInterval ->
-    if doReload
-      console.log 'Livereload: Start reload window'
+  reload: ->
+    console.log 'Livereload: Start reload window'
 
-      # Clear require cache
-      cache = global.require.cache
-      for reqCache of cache
-        delete cache[reqCache]
+    # Clear require cache
+    cache = global.require.cache
+    for reqCache of cache
+      delete cache[reqCache]
 
-      # Reload window
-      window.location.reload()
+    # Reload window
+    window.location.reload()
 
-      doReload = false
-  , 500
+  watchSources: ->
+    {Gaze} = require('gaze')
+    gaze = new Gaze('**/*')
+    doReload = false
 
-  gaze.on 'all', (event, filepath) ->
-    console.log "Livereload: File change on #{filepath}"
-    if window.location
-      doReload = true
-      gaze.close()
+    setInterval =>
+      if doReload
+        @reload()
+        doReload = false
+    , 500
+
+    gaze.on 'all', (event, filepath) ->
+      console.log "Livereload: File change on #{filepath}"
+      if window.location
+        doReload = true
+        gaze.close()
+
+  listenKeyboardShortcut: ->
+    {jwerty} = require 'jwerty'
+    jwerty.key '⌘+r', @reload

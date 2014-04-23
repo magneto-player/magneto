@@ -5,8 +5,15 @@ class Workspace extends View
   @content: ->
     @div class: 'workspace', =>
       @h1 'Hello World!'
-      @video poster: 'http://www.videojs.com/img/poster.jpg', controls: true, preload: 'auto', =>
-        @source src: 'http://vjs.zencdn.net/v/oceans.mp4', type: 'video/mp4'
+      @video
+        class: 'video-js vjs-default-skin vjs-big-play-centered'
+        poster: 'http://www.videojs.com/img/poster.jpg'
+        controls: true
+        preload: 'auto'
+        width: 600
+        height: 400
+        =>
+          @source src: 'http://video-js.zencoder.com/oceans-clip.mp4', type: 'video/mp4'
       @div id: 'time'
 
       @a href: 'javascript:process.exit(0)', 'Quit'

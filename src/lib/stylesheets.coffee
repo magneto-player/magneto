@@ -13,10 +13,8 @@ class Stylesheets
     unless filepath
       throw new Error("Stylesheets #{file} does not exists.")
 
-    buff = fs.readFileSync filepath
     @$head.append(
-      $('<style />', id: filepath)
-        .html buff.toString('utf-8')
+      $('<link />', href: filepath, rel: 'stylesheet')
     )
 
   resolveStylesheet: (file) ->

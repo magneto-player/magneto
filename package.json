@@ -2,11 +2,11 @@
   "name": "niceplay",
   "version": "0.0.0",
   "description": "Open-source player.",
-  "main": "lib/index.html",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "start": "grunt server",
     "test": "grunt test"
   },
   "repository": {
@@ -35,11 +35,6 @@
     "grunt-shell": "^0.6.4",
     "jasmine-core": "^2.0.0",
     "load-grunt-tasks": "^0.4.0"
-  },
-  "window": {
-    "toolbar": false,
-    "width": 800,
-    "height": 600
   },
   "dependencies": {
     "emissary": "^1.2.1",

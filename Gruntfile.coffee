@@ -22,6 +22,49 @@ module.exports = (grunt) ->
         files: [
           { expand: true, cwd: 'src', src: ['index.html', 'package.json'], dest: 'lib' }
         ]
+      ffmpeg:
+        files: [
+          {
+            src: 'libraries/win/ffmpegsumo.dll',
+            dest: 'build/releases/niceplay/win/niceplay/ffmpegsumo.dll',
+            flatten: true
+          }
+          {
+            src: 'libraries/win/ffmpegsumo.dll',
+            dest: 'build/cache/win/<%= nodewebkit.build.options.version %>/ffmpegsumo.dll',
+            flatten: true
+          }
+          {
+            src: 'libraries/mac/ffmpegsumo.so',
+            dest: 'build/releases/niceplay/mac/niceplay.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so',
+            flatten: true
+          }
+          {
+            src: 'libraries/mac/ffmpegsumo.so',
+            dest: 'build/cache/mac/<%= nodewebkit.build.options.version %>/node-webkit.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so',
+            flatten: true
+          }
+          # {
+          #   src: 'libraries/linux64/libffmpegsumo.so',
+          #   dest: 'build/releases/niceplay/linux64/niceplay/libffmpegsumo.so',
+          #   flatten: true
+          # }
+          # {
+          #   src: 'libraries/linux64/libffmpegsumo.so',
+          #   dest: 'build/cache/linux64/<%= nodewebkit.build.options.version %>/libffmpegsumo.so',
+          #   flatten: true
+          # }
+          # {
+          #   src: 'libraries/linux32/libffmpegsumo.so',
+          #   dest: 'build/releases/niceplay/linux32/niceplay/libffmpegsumo.so',
+          #   flatten: true
+          # }
+          # {
+          #   src: 'libraries/linux32/libffmpegsumo.so',
+          #   dest: 'build/cache/linux32/<%= nodewebkit.build.options.version %>/libffmpegsumo.so',
+          #   flatten: true
+          # }
+        ]
 
     clean:
       build: ['lib']
@@ -87,6 +130,10 @@ module.exports = (grunt) ->
 
   #   return buildPlatforms
 
+  grunt.registerTask 'check-node-webkit-build', ->
+    if !grunt.file.isDir 'build/cache/mac/0.9.2'
+      grunt.task.run ['build']
+
   grunt.registerTask 'build:src', [
     'coffee:build'
     'copy:build'
@@ -96,12 +143,13 @@ module.exports = (grunt) ->
     'clean:build'
     'build:src'
     'nodewebkit:build'
+    'copy:ffmpeg'
   ]
 
-  grunt.registerTask 'server', ['build:src', 'concurrent:dev']
+  grunt.registerTask 'start', ['check-node-webkit-build', 'build:src', 'concurrent:dev']
   grunt.registerTask 'test', []
   grunt.registerTask 'default', [
-    'server'
+    'start'
   ]
 
   return

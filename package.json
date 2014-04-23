@@ -34,7 +34,8 @@
     "grunt-node-webkit-builder": "^0.1.20",
     "grunt-shell": "^0.6.4",
     "jasmine-core": "^2.0.0",
-    "load-grunt-tasks": "^0.4.0"
+    "load-grunt-tasks": "^0.4.0",
+    "grunt-sass": "^0.12.1"
   },
   "dependencies": {
     "emissary": "^1.2.1",

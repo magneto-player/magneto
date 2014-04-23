@@ -3,71 +3,104 @@ module.exports = (grunt) ->
 
   # var buildPlatforms = parseBuildPlatforms(grunt.option('platforms'));
 
+  config =
+    build: 'build'
+    libraries: 'librairies'
+    src: 'src'
+    lib: 'lib'
+    test: 'test'
+    testLib: 'test_lib'
+    assets: 'src/assets'
+    assetsLib: 'lib/assets/'
+    styles: 'src/assets/styles'
+    stylesLib: 'lib/assets/styles'
+
   grunt.initConfig
+    config: config
+
+    # WATCH
     watch:
       src:
-        files: ['src/**/*']
+        files: [config.src + '/**/*']
         tasks: ['build:src']
+      css:
+        files: [config.styles + '/**/*']
+        tasks: ['sass:dev']
 
+    # BUILD
     coffee:
       build:
         expand: true
-        cwd: 'src'
+        cwd: config.src
         src: ['**/*.coffee']
-        dest: 'lib'
+        dest: config.lib
         ext: '.js'
+
+    sass:
+      dist:
+        files:
+          '<%= config.stylesLib %>/main.css': config.styles + '/main.scss'
+        options:
+          outputStyle: 'compressed'
+          includePaths: [config.styles + '/imports.css']
+      dev:
+        files:
+          '<%= config.stylesLib %>/main.css': config.styles + '/main.scss'
+        options:
+          outputStyle: 'nested'
+          includePaths: [config.styles + '/imports.css']
 
     copy:
       build:
         files: [
-          { expand: true, cwd: 'src', src: ['index.html', 'package.json'], dest: 'lib' }
+          { expand: true, cwd: 'src', src: ['index.html', 'package.json'], dest: config.lib }
         ]
       ffmpeg:
         files: [
           {
-            src: 'libraries/win/ffmpegsumo.dll',
+            src: config.librairies + '/win/ffmpegsumo.dll',
             dest: 'build/releases/niceplay/win/niceplay/ffmpegsumo.dll',
             flatten: true
           }
           {
-            src: 'libraries/win/ffmpegsumo.dll',
+            src: config.librairies + '/win/ffmpegsumo.dll',
             dest: 'build/cache/win/<%= nodewebkit.build.options.version %>/ffmpegsumo.dll',
             flatten: true
           }
           {
-            src: 'libraries/mac/ffmpegsumo.so',
+            src: config.librairies + '/mac/ffmpegsumo.so',
             dest: 'build/releases/niceplay/mac/niceplay.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so',
             flatten: true
           }
           {
-            src: 'libraries/mac/ffmpegsumo.so',
+            src: config.librairies + '/mac/ffmpegsumo.so',
             dest: 'build/cache/mac/<%= nodewebkit.build.options.version %>/node-webkit.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so',
             flatten: true
           }
           # {
-          #   src: 'libraries/linux64/libffmpegsumo.so',
+          #   src: config.librairies + '/linux64/libffmpegsumo.so',
           #   dest: 'build/releases/niceplay/linux64/niceplay/libffmpegsumo.so',
           #   flatten: true
           # }
           # {
-          #   src: 'libraries/linux64/libffmpegsumo.so',
+          #   src: config.librairies + '/linux64/libffmpegsumo.so',
           #   dest: 'build/cache/linux64/<%= nodewebkit.build.options.version %>/libffmpegsumo.so',
           #   flatten: true
           # }
           # {
-          #   src: 'libraries/linux32/libffmpegsumo.so',
+          #   src: config.librairies + '/linux32/libffmpegsumo.so',
           #   dest: 'build/releases/niceplay/linux32/niceplay/libffmpegsumo.so',
           #   flatten: true
           # }
           # {
-          #   src: 'libraries/linux32/libffmpegsumo.so',
+          #   src: config.librairies + '/linux32/libffmpegsumo.so',
           #   dest: 'build/cache/linux32/<%= nodewebkit.build.options.version %>/libffmpegsumo.so',
           #   flatten: true
           # }
         ]
 
     clean:
-      build: ['lib']
+      build: [config.lib]
 
     concurrent:
       options:
@@ -76,7 +109,7 @@ module.exports = (grunt) ->
 
     shell:
       nodewebkit:
-        command: './build/cache/mac/0.9.2/node-webkit.app/Contents/MacOS/node-webkit ./lib'
+        command: './build/cache/mac/0.9.2/node-webkit.app/Contents/MacOS/node-webkit --debug ./lib'
         options:
           stdout: true
           stderr: true
@@ -93,7 +126,7 @@ module.exports = (grunt) ->
           # linux64: buildPlatforms.linux64
 
         src: [ # Your node-webkit app './**/*'
-          './lib/**'
+          './<%= config.lib %>/**'
         ]
 
       dist:
@@ -109,7 +142,7 @@ module.exports = (grunt) ->
           # linux64: buildPlatforms.linux64
 
         src: [ # Your node-webkit app './**/*'
-          './lib/**'
+          './<%= config.lib %>/**'
         ]
 
   # parseBuildPlatforms = (argumentPlatform) ->
@@ -136,6 +169,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'build:src', [
     'coffee:build'
+    'sass:dev'
     'copy:build'
   ]
 

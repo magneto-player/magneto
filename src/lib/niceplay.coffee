@@ -1,7 +1,12 @@
 
-theorist = require 'theorist'
+{Model} = require 'theorist'
+osenv = require 'osenv'
+path = require 'path'
 
-class NicePlay extends theorist.Model
+class NicePlay extends Model
+  @::Views =
+    View: require './views/view'
+
   initialize: ->
     @package = require '../package.json'
 
@@ -13,36 +18,46 @@ class NicePlay extends theorist.Model
     # Exception handler
     require './debug/exception-handler'
 
-    # Init components
-    Config = require './config'
-    PackageManager = require './package-manager'
+    # Require components
+    Config = require 'niceplay-config'
+    PackageManager = require './package/package-manager'
     Stylesheets = require './stylesheets'
     Workspace = require './views/workspace'
     Statusbar = require './statusbar'
     FileInput = require './file-input'
-    Player = require './player'
+    #Player = require './player'
     KeyboardShortcut = require './keyboard-shortcut'
 
+    # Init components
+    envDir = path.join osenv.home(), '.niceplay'
+
     @config = new Config(
-      dir: '~/.niceplay'
+      dir: envDir
     )
     @packages = new PackageManager(
-      dir: '~/.niceplay/packages'
+      dirs: [
+        path.join __dirname, '../../node_modules'
+        path.join envDir, 'packages'
+      ]
     )
+
     @stylesheets = new Stylesheets()
     @workspace = new Workspace()
 
     @statusbar = new Statusbar()
 
-    @player = new Player()
+    #@player = new Player()
     @fileInput = new FileInput()
 
-    @playerShortcut = new KeyboardShortcut()
+    @playerShortcut = new KeyboardShortcut
 
-    # Main
+    # On ready
     $ = require 'jquery'
-
     $ =>
       @workspace.appendTo 'body'
+      @packages.loadPackages()
+      @packages.activatePackages()
+
+      console.log @packages
 
 module.exports = NicePlay

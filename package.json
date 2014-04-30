@@ -39,12 +39,15 @@
     "lodash": "^2.4.1"
   },
   "dependencies": {
+    "dotty": "0.0.2",
     "emissary": "^1.2.1",
     "fs-plus": "^2.2.2",
     "jquery": "^2.1.0",
     "jwerty": "git://github.com/loicmahieu/jwerty",
+    "niceplay-config": "0.0.1",
+    "niceplay-pkg-player": "0.0.2",
+    "osenv": "0.0.3",
     "space-pen": "^3.1.2",
-    "theorist": "^1.0.1",
-    "video.js": "^4.5.2"
+    "theorist": "^1.0.1"
   }
 }

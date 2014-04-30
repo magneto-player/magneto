@@ -1,6 +1,6 @@
 
 spacePen = require 'space-pen'
-Subscriber = require('emissary').Subscriber
+{Subscriber} = require 'emissary'
 
 class View extends spacePen.View
   Subscriber.includeInto @

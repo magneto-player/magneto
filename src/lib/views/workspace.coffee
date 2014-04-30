@@ -29,29 +29,18 @@ class Workspace extends View
 
     autoPlay = false
     title = 'Hello World !'
-    videoSource = 'http://vjs.zencdn.net/v/oceans.mp4'
-    argv = nw.gui.App.argv
-
-    if argv.length
-      title = argv[0]
-      videoSource = argv[0]
-      autoplay = true
 
     video = @find('video').get(0)
     mainTitle = @find('#main-title')
     $(mainTitle).text(title)
 
-    $(video).attr 'src', videoSource
-
     player = videojs video
     player.ready ->
       # Player (this) is initialized and ready.
       console.log 'player ready'
-      this.play() if autoplay
 
-    nw.gui.App.on 'open', (cmdline) ->
-      $(mainTitle).text(cmdline)
-      $(video).attr 'src', cmdline
+    niceplay.on 'file:new', (path) ->
+      $(video).attr 'src', path
       player.play()
 
 module.exports = Workspace

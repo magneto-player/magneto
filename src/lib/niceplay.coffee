@@ -18,6 +18,7 @@ class NicePlay extends theorist.Model
     PackageManager = require './package-manager'
     Stylesheets = require './stylesheets'
     Workspace = require './views/workspace'
+    FileInput = require './file-input'
 
     @config = new Config(
       dir: '~/.niceplay'
@@ -27,6 +28,7 @@ class NicePlay extends theorist.Model
     )
     @stylesheets = new Stylesheets()
     @workspace = new Workspace()
+    @fileInput = new FileInput()
 
     # Main
     $ = require 'jquery'

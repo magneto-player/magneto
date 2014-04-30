@@ -35,7 +35,8 @@
     "grunt-shell": "^0.6.4",
     "jasmine-core": "^2.0.0",
     "load-grunt-tasks": "^0.4.0",
-    "grunt-sass": "^0.12.1"
+    "grunt-sass": "^0.12.1",
+    "lodash": "^2.4.1"
   },
   "dependencies": {
     "emissary": "^1.2.1",

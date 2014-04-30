@@ -5,8 +5,7 @@ class StatusbarView extends View
     @div class: 'statusbar', =>
       @h1 id: 'main-title', 'NicePlayer'
 
-      @div id:'title', =>
-        'No file loaded'
+      @div id:'title', 'No file loaded'
 
       @div class: 'icon-state', =>
         @i
@@ -21,7 +20,7 @@ class StatusbarView extends View
       .addClass('.btn-left')
 
   setTitle: (title) ->
-    @find('#title').text(title)
+    @find('#title').html(title)
 
   setIcon: (icon) ->
     @find('.icon').find('i')

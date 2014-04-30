@@ -20,6 +20,8 @@ class NicePlay extends theorist.Model
     Workspace = require './views/workspace'
     FileInput = require './file-input'
 
+    Player = require './player'
+
     @config = new Config(
       dir: '~/.niceplay'
     )
@@ -30,10 +32,13 @@ class NicePlay extends theorist.Model
     @workspace = new Workspace()
     @fileInput = new FileInput()
 
+    @player = new Player()
+
     # Main
     $ = require 'jquery'
 
     $ =>
       @workspace.appendTo 'body'
+      @emit('file:new', __dirname)
 
 module.exports = NicePlay

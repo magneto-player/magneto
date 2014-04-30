@@ -3,7 +3,6 @@
 # integration with browser side components.
 global.document = window.document
 global.navigator = window.navigator
-global.MediaLoader = window.MediaLoader
 window.nw = global.nw =
   gui: require('nw.gui')
 
@@ -12,6 +11,6 @@ window.nw = global.nw =
 NicePlay = require './lib/niceplay'
 niceplay = new NicePlay()
 
-global.niceplay = niceplay
+window.niceplay = global.niceplay = niceplay
 
 niceplay.initialize()

@@ -4,8 +4,6 @@ class Statusbar
   constructor: ->
     @statusbarView = new StatusbarView()
 
-    console.log @statusbarView
-
     niceplay.workspace.append @statusbarView
 
     niceplay.on 'file:new', @load

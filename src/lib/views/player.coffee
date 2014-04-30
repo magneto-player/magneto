@@ -12,7 +12,7 @@ class PlayerView extends View
         height: '100%'
 
   initialize: ->
-    @video = @find('video')
+    @video = @find('video').get(0)
 
     # Init video.js
     videojs = require 'video.js/dist/video-js/video.dev.js'
@@ -20,12 +20,12 @@ class PlayerView extends View
 
     console.log @video
 
-    @player = videojs @video.get(0)
+    @player = videojs @video
     @player.ready =>
       niceplay.emit('player:ready')
 
   setFile: (url, play = true) ->
-    @video.attr 'src', url
+    @video.src = url
     @play() if play
 
   play: ->
@@ -39,5 +39,11 @@ class PlayerView extends View
 
   pause: ->
     @player.pause()
+
+  toggle: ->
+    if @video.paused
+      @play()
+    else
+      @pause()
 
 module.exports = PlayerView

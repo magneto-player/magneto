@@ -1,6 +1,5 @@
 
 PlayerView = require './views/player'
-KeyboardShortcut = require './keyboard-shortcut'
 
 class Player
   constructor: ->
@@ -12,9 +11,7 @@ class Player
     niceplay.on '!player:play', @play
     niceplay.on '!player:pause', @pause
     niceplay.on '!player:stop', @stop
-
-    # Shortcut
-    @playerShortcut = new KeyboardShortcut
+    niceplay.on '!player:toggle', @toggle
 
   load: (url) =>
     @playerView.setFile(url)
@@ -28,5 +25,7 @@ class Player
   stop: =>
     @playerView.stop()
 
+  toggle: =>
+    @playerView.toggle()
 
 module.exports = Player

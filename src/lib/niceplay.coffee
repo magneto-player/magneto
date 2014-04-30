@@ -21,6 +21,7 @@ class NicePlay extends theorist.Model
     Statusbar = require './statusbar'
     FileInput = require './file-input'
     Player = require './player'
+    KeyboardShortcut = require './keyboard-shortcut'
 
     @config = new Config(
       dir: '~/.niceplay'
@@ -35,6 +36,8 @@ class NicePlay extends theorist.Model
 
     @player = new Player()
     @fileInput = new FileInput()
+
+    @playerShortcut = new KeyboardShortcut()
 
     # Main
     $ = require 'jquery'

@@ -54,7 +54,11 @@ class NicePlay extends Model
     # On ready
     $ = require 'jquery'
     $ =>
+      @stylesheets.require('niceplay-style/dist/styles/main')
+
       @workspace.appendTo 'body'
+      @statusbar.initialize()
+
       @packages.loadPackages()
       @packages.activatePackages()
 

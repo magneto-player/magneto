@@ -2,10 +2,9 @@ StatusbarView = require './views/statusbar'
 path = require 'path'
 
 class Statusbar
-  constructor: ->
+  initialize: ->
     @statusbarView = new StatusbarView()
-
-    niceplay.workspace.append @statusbarView
+    @statusbarView.appendTo('body')
 
     niceplay.on 'file:new', @load
 

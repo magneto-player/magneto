@@ -1,4 +1,5 @@
 StatusbarView = require './views/statusbar'
+path = require 'path'
 
 class Statusbar
   constructor: ->
@@ -21,7 +22,11 @@ class Statusbar
   stop: =>
     @statusbarView.setIcon 'icon-stop'
 
-  load: (url) =>
-    @statusbarView.setTitle url
+  load: (fileName) =>
+    @statusbarView.setTitle(
+      path.basename(
+        fileName
+      )
+    )
 
 module.exports = Statusbar

@@ -1,7 +1,6 @@
 
 module.exports = devtools =
   initialize: ->
-    @showDevTools()
     @listenKeyboardShortcut()
 
   showDevTools: ->

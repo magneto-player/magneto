@@ -21,6 +21,7 @@ class StatusbarView extends View
 
   setTitle: (title) ->
     @find('#title').html(title)
+    nw.gui.Window.get().title = title
 
   setIcon: (icon) ->
     @find('.icon').find('i')

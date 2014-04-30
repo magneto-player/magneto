@@ -18,6 +18,7 @@ class NicePlay extends theorist.Model
     PackageManager = require './package-manager'
     Stylesheets = require './stylesheets'
     Workspace = require './views/workspace'
+    Statusbar = require './statusbar'
     FileInput = require './file-input'
     Player = require './player'
 
@@ -29,6 +30,8 @@ class NicePlay extends theorist.Model
     )
     @stylesheets = new Stylesheets()
     @workspace = new Workspace()
+
+    @statusbar = new Statusbar()
 
     @player = new Player()
     @fileInput = new FileInput()

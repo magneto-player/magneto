@@ -3,6 +3,9 @@ StatusbarView = require './views/statusbar'
 class Statusbar
   constructor: ->
     @statusbarView = new StatusbarView()
+
+    console.log @statusbarView
+
     niceplay.workspace.append @statusbarView
 
     niceplay.on 'file:new', @load
@@ -11,16 +14,16 @@ class Statusbar
     niceplay.on '!player:pause', @pause
     niceplay.on '!player:stop', @stop
 
-  play: ->
+  play: =>
     @statusbarView.setIcon 'icon-play'
 
-  pause: ->
+  pause: =>
     @statusbarView.setIcon 'icon-pause'
 
-  stop: ->
+  stop: =>
     @statusbarView.setIcon 'icon-stop'
 
-  load: (url) ->
+  load: (url) =>
     @statusbarView.setTitle url
 
 module.exports = Statusbar

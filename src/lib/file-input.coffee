@@ -1,5 +1,3 @@
-$ = require 'jquery'
-
 class FileInput
   constructor: ->
     argv = nw.gui.App.argv
@@ -9,7 +7,6 @@ class FileInput
     nw.gui.App.on 'open', (cmdline) =>
       @newFile cmdline
 
-    windoow = $('window').get(0)
     window.ondragover = (e) ->
       e.preventDefault()
       false

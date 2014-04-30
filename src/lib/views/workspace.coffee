@@ -15,23 +15,4 @@ class Workspace extends View
   initialize: ->
     @find('#time').text(new Date())
 
-    videojs = require 'video.js/dist/video-js/video.dev.js'
-    niceplay.stylesheets.require('video.js/dist/video-js/video-js')
-
-    autoPlay = false
-    title = 'Hello World !'
-
-    video = @find('video').get(0)
-    mainTitle = @find('#main-title')
-    $(mainTitle).text(title)
-
-    player = videojs video
-    player.ready ->
-      # Player (this) is initialized and ready.
-      console.log 'player ready'
-
-    niceplay.on 'file:new', (path) ->
-      $(video).attr 'src', path
-      player.play()
-
 module.exports = Workspace

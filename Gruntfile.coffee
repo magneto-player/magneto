@@ -5,7 +5,7 @@ module.exports = (grunt) ->
 
   config =
     build: 'build'
-    libraries: 'librairies'
+    libraries: 'libraries'
     src: 'src'
     lib: 'lib'
     test: 'test'
@@ -58,23 +58,23 @@ module.exports = (grunt) ->
       ffmpeg:
         files: [
           {
-            src: config.librairies + '/win/ffmpegsumo.dll',
-            dest: 'build/releases/niceplay/win/niceplay/ffmpegsumo.dll',
+            src: '<%= config.libraries %>/win/ffmpegsumo.dll'
+            dest: 'build/releases/niceplay/win/niceplay/ffmpegsumo.dll'
             flatten: true
           }
           {
-            src: config.librairies + '/win/ffmpegsumo.dll',
-            dest: 'build/cache/win/<%= nodewebkit.build.options.version %>/ffmpegsumo.dll',
+            src: '<%= config.libraries %>/win/ffmpegsumo.dll'
+            dest: 'build/cache/win/<%= nodewebkit.build.options.version %>/ffmpegsumo.dll'
             flatten: true
           }
           {
-            src: config.librairies + '/mac/ffmpegsumo.so',
-            dest: 'build/releases/niceplay/mac/niceplay.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so',
+            src: '<%= config.libraries %>/mac/ffmpegsumo.so'
+            dest: 'build/releases/niceplay/mac/niceplay.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so'
             flatten: true
           }
           {
-            src: config.librairies + '/mac/ffmpegsumo.so',
-            dest: 'build/cache/mac/<%= nodewebkit.build.options.version %>/node-webkit.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so',
+            src: '<%= config.libraries %>/mac/ffmpegsumo.so'
+            dest: 'build/cache/mac/<%= nodewebkit.build.options.version %>/node-webkit.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so'
             flatten: true
           }
           # {
@@ -109,7 +109,7 @@ module.exports = (grunt) ->
 
     shell:
       nodewebkit:
-        command: './build/cache/mac/0.9.2/node-webkit.app/Contents/MacOS/node-webkit --debug ./lib'
+        command: './build/cache/mac/<%= nodewebkit.build.options.version %>/node-webkit.app/Contents/MacOS/node-webkit --debug ./lib'
         options:
           stdout: true
           stderr: true

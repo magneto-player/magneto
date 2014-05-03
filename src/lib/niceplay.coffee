@@ -24,8 +24,8 @@ class NicePlay extends Model
     Stylesheets = require './stylesheets'
     Workspace = require './views/workspace'
     FileInput = require './file-input'
-    #Player = require './player'
     KeyboardShortcut = require './keyboard-shortcut'
+    MenuBar = require './menu-bar'
 
     # Init components
     envDir = path.join osenv.home(), '.niceplay'
@@ -43,11 +43,12 @@ class NicePlay extends Model
     @stylesheets = new Stylesheets()
     @workspace = new Workspace()
 
-
-    #@player = new Player()
     @fileInput = new FileInput()
 
-    @playerShortcut = new KeyboardShortcut
+    @keyboardShortcut = new KeyboardShortcut
+
+    @menuBar = new MenuBar
+      debug: @package.debug
 
     # On ready
     $ = require 'jquery'
@@ -58,7 +59,5 @@ class NicePlay extends Model
 
       @packages.loadPackages()
       @packages.activatePackages()
-
-      console.log @packages
 
 module.exports = NicePlay

@@ -13,7 +13,7 @@ module.exports = livereload =
       delete cache[reqCache]
 
     # Reload window
-    window.location.reload()
+    nw.gui.Window.get().reloadIgnoringCache()
 
   watchSources: ->
     {Gaze} = require('gaze')

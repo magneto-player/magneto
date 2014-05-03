@@ -9,5 +9,4 @@ module.exports = devtools =
   listenKeyboardShortcut: ->
     {jwerty} = require 'jwerty'
     jwerty.key '⌘+alt+I', ->
-      console.log 'Devtools: open dev tools'
       devtools.showDevTools()

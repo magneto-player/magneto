@@ -46,7 +46,8 @@
     "jwerty": "git://github.com/loicmahieu/jwerty",
     "niceplay-config": "0.0.1",
     "niceplay-pkg-player": "0.0.2",
-    "niceplay-style": "0.0.1",
+    "niceplay-pkg-status-bar": "0.0.1",
+    "niceplay-style": "0.0.2",
     "osenv": "0.0.3",
     "space-pen": "^3.1.2",
     "theorist": "^1.0.1"

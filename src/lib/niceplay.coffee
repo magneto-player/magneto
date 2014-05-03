@@ -23,7 +23,6 @@ class NicePlay extends Model
     PackageManager = require './package/package-manager'
     Stylesheets = require './stylesheets'
     Workspace = require './views/workspace'
-    Statusbar = require './statusbar'
     FileInput = require './file-input'
     #Player = require './player'
     KeyboardShortcut = require './keyboard-shortcut'
@@ -44,7 +43,6 @@ class NicePlay extends Model
     @stylesheets = new Stylesheets()
     @workspace = new Workspace()
 
-    @statusbar = new Statusbar()
 
     #@player = new Player()
     @fileInput = new FileInput()
@@ -57,7 +55,6 @@ class NicePlay extends Model
       @stylesheets.require('niceplay-style/dist/styles/main')
 
       @workspace.appendTo 'body'
-      @statusbar.initialize()
 
       @packages.loadPackages()
       @packages.activatePackages()

@@ -8,7 +8,7 @@ class KeyboardShortcut
       niceplay.emit '!player:toggle'
 
     jwerty.key 'esc', ->
-      niceplay.emit '!leave-fullscreen'
+      niceplay.emit '!window:leave-fullscreen'
 
     jwerty.key 'ctrl+m', ->
       console.log 'Menu'

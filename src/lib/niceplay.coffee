@@ -22,6 +22,7 @@ class NicePlay extends Model
     Config = require 'niceplay-config'
     PackageManager = require './package/package-manager'
     Stylesheets = require './stylesheets'
+    Window = require './window'
     Workspace = require './views/workspace'
     FileInput = require './file-input'
     KeyboardShortcut = require './keyboard-shortcut'
@@ -41,6 +42,7 @@ class NicePlay extends Model
     )
 
     @stylesheets = new Stylesheets()
+    @window = new Window()
     @workspace = new Workspace()
 
     @fileInput = new FileInput()

@@ -17,7 +17,7 @@ module.exports = livereload =
 
   watchSources: ->
     {Gaze} = require('gaze')
-    gaze = new Gaze('**/*')
+    gaze = new Gaze(['**/*', '!node_modules/**/*'])
     doReload = false
 
     setInterval =>

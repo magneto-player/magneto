@@ -1,31 +1,36 @@
 
 fs = require 'fs'
 path = require 'path'
+CSON = require 'season'
 
 class Package
-  constructor: (dir) ->
-    @_dir = dir
-    @_readPackageJSON()
+  @readPackageJSON = (pkgDirPath) ->
+    if pkgFilePath = CSON.resolve(path.join(pkgDirPath, 'package'))
+      try
+        pkg = CSON.readFileSync(pkgFilePath)
+      catch error
+        throw error
 
-  _readPackageJSON: ->
-    try
-      pkgFile = fs.readFileSync path.join(@_dir, 'package.json')
-      @json = JSON.parse pkgFile
+    pkg ?= {}
+    pkg.name = path.basename(pkgDirPath)
+    pkg
 
-      @name = @json.name
-    catch e
-      console.error "Failed to load package '#{@_dir}#'", e.message
-      console.error e.stack
-
-  _require: ->
-    @_pkg = @_pkg or require(@_dir)
+  constructor: (@pkgDirPath, @pkg) ->
+    @pkg ?= Package.readPackageJSON(pkgDirPath)
+    @name = @pkg.name
 
   activate: ->
     @_require()
-    @_pkg.activate()
+    @_module.activate()
 
   desactivate: ->
-    @_pkg?.desactivate()
+    @_module?.desactivate()
+
+
+  ## Private methods
+
+  _require: ->
+    @_module = @_module or require(@pkgDirPath)
 
 
 module.exports = Package

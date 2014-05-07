@@ -19,13 +19,12 @@ class PackageManager
     @activatePackage pkgName for pkgName of @packages
 
   activatePackage: (pkgName) ->
-    @packages[pkgName].activate()
+    @packages[pkgName]?.activate()
 
   desactivatePackage: (pkgName) ->
-    @packages[pkgName].desactivate()
+    @packages[pkgName]?.desactivate()
 
   _initPackage: (path) ->
-    console.log path
     pkg = new Package(path)
     @packages[pkg.name] = pkg
 

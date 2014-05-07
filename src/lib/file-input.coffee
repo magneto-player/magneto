@@ -3,9 +3,11 @@
 
 class FileInput
   constructor: ->
-    @_parseArgv()
     @_listenOpen()
     @_listenDrag()
+
+    niceplay.on 'ready', =>
+      @_parseArgv()
 
   newFile: (path) ->
     niceplay.emit 'file:new', path

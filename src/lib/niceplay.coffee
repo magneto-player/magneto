@@ -62,4 +62,6 @@ class NicePlay extends Model
       @packages.loadPackages()
       @packages.activatePackages()
 
+      @emit('ready')
+
 module.exports = NicePlay

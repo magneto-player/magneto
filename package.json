@@ -43,6 +43,7 @@
     "dotty": "0.0.2",
     "emissary": "^1.2.1",
     "fs-plus": "^2.2.2",
+    "glob": "^3.2.9",
     "jquery": "^2.1.0",
     "jwerty": "git://github.com/loicmahieu/jwerty",
     "niceplay-config": "0.0.2",

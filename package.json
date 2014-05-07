@@ -47,7 +47,7 @@
     "jquery": "^2.1.0",
     "jwerty": "git://github.com/loicmahieu/jwerty",
     "niceplay-config": "0.0.2",
-    "niceplay-pkg-player": "0.0.3",
+    "niceplay-pkg-player": "0.0.4",
     "niceplay-pkg-status-bar": "0.0.1",
     "niceplay-style": "0.0.3",
     "npm": "^1.4.7",

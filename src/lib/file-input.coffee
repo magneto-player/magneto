@@ -33,18 +33,17 @@ class FileInput
       @newFile cmdline
 
   _listenDrag: ->
-    preventDefault = (e) -> e.preventDefault()
-
     # Prevent dropping files into the window
-    window.addEventListener 'dragover', preventDefault, false
+    window.addEventListener 'dragover', ((e) -> e.preventDefault()), false
     window.addEventListener 'drop', (e) =>
       e.preventDefault()
       file = e.dataTransfer.files[0]
-      @newFile file.path
+      if file and file.path
+        @newFile file.path
     , false
 
     # Prevent dragging files outside the window
-    window.addEventListener 'dragstart', preventDefault, false
+    window.addEventListener 'dragstart', ((e) -> e.preventDefault()), false
 
 
 module.exports = FileInput

@@ -1,7 +1,6 @@
 
 $ = require 'jquery'
-
-# todo: https://github.com/rogerwang/node-webkit/wiki/Preserve-window-state-between-sessions
+WindowState = require './window-state'
 
 class Window
   fullScreenClass: 'full-screen'
@@ -20,6 +19,8 @@ class Window
     niceplay.on '!window:leave-fullscreen', @leaveFullscreen
     niceplay.on '!window:exit', @exit
     niceplay.on '!window:set-title', @setTitle
+
+    windowState = new WindowState @_win
 
   maximize: =>
     @_win.maximize()

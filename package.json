@@ -50,7 +50,7 @@
     "niceplay-pkg-menu": "0.0.1",
     "niceplay-pkg-player": "0.0.4",
     "niceplay-pkg-shortcuts": "0.0.1",
-    "niceplay-pkg-status-bar": "0.0.1",
+    "niceplay-pkg-status-bar": "0.0.2",
     "niceplay-style": "0.0.3",
     "npm": "^1.4.7",
     "osenv": "0.0.3",

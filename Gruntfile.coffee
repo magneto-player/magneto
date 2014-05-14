@@ -4,6 +4,8 @@ module.exports = (grunt) ->
 
   buildPlatforms = parseBuildPlatforms(grunt.option('platforms'));
 
+  pkg = require('./package.json')
+
   config =
     build: 'build'
     libraries: 'libraries'
@@ -65,7 +67,17 @@ module.exports = (grunt) ->
           outputStyle: 'nested'
           includePaths: [config.styles + '/imports.css']
 
-    copy:
+    symlink:
+      'node-modules':
+        src: 'node_modules'
+        dest: 'lib/node_modules'
+
+    transfo:
+      'node-modules':
+        options: lazy: true
+        files: [
+          { expand: true, cwd: 'node_modules', src: _.keys(pkg.dependencies).map((k) -> k + '/**'), dest: config.lib + '/node_modules' }
+        ]
       build:
         files: [
           { expand: true, cwd: 'src', src: ['index.html', 'package.json'], dest: config.lib }
@@ -147,14 +159,15 @@ module.exports = (grunt) ->
   grunt.registerTask 'build:src', [
     'coffee:build'
     'sass:dev'
-    'copy:build'
+    'transfo:build'
   ]
 
   grunt.registerTask 'build', [
-    'clean:build'
+    # 'clean:build'
     'build:src'
+    'transfo:node-modules'
     'nodewebkit:build'
-    'copy:ffmpeg'
+    'transfo:ffmpeg'
   ]
 
   grunt.registerTask 'start', ['check-node-webkit-build', 'build:src', 'concurrent:dev']

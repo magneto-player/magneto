@@ -37,6 +37,7 @@ class NicePlay extends Model
     @packages = new PackageManager(
       dirs: [
         path.join __dirname, '../../node_modules'
+        path.join __dirname, '../node_modules'
         path.join envDir, 'packages'
       ]
     )

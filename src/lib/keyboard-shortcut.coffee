@@ -10,8 +10,8 @@ class KeyboardShortcut
     jwerty.key 'esc', ->
       niceplay.emit '!window:leave-fullscreen'
 
-    jwerty.key 'ctrl+m', ->
-      console.log 'Menu'
+    jwerty.key 'm', ->
+      niceplay.emit '!menu:toggle'
 
 
 

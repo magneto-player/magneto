@@ -47,7 +47,7 @@
     "glob": "^3.2.9",
     "jquery": "^2.1.0",
     "jwerty": "git://github.com/loicmahieu/jwerty",
-    "niceplay-config": "0.0.3",
+    "niceplay-config": "0.0.4",
     "niceplay-pkg-menu": "0.0.1",
     "niceplay-pkg-player": "0.0.4",
     "niceplay-pkg-shortcuts": "0.0.1",

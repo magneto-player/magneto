@@ -23,14 +23,19 @@ module.exports = (grunt) ->
         app_name: 'Niceplay'
         version: '0.9.2'
         build_dir: './build' # Where the build version of my node-webkit app is saved
-        # mac_icns: './images/popcorntime.icns' # Path to the Mac icon file
         mac: buildPlatforms.mac
-        # win: buildPlatforms.win
+        win: false # buildPlatforms.win
         # linux32: buildPlatforms.linux32
         # linux64: buildPlatforms.linux64
+
+        # Mac only
+        # mac_icns: './images/popcorntime.icns' # Path to the Mac icon file
+        credits: './credits.html'
       src: [ # Your node-webkit app './**/*'
         './<%= config.lib %>/**'
-      ]
+      ].concat(
+        _.keys(pkg.dependencies).map((k) -> './node_modules/' + k + '/**/*')
+      )
 
   grunt.initConfig
     config: config
@@ -73,27 +78,22 @@ module.exports = (grunt) ->
         dest: 'lib/node_modules'
 
     transfo:
-      'node-modules':
-        options: lazy: true
-        files: [
-          { expand: true, cwd: 'node_modules', src: _.keys(pkg.dependencies).map((k) -> k + '/**'), dest: config.lib + '/node_modules' }
-        ]
       build:
         files: [
           { expand: true, cwd: 'src', src: ['index.html', 'package.json'], dest: config.lib }
         ]
       ffmpeg:
         files: [
-          {
-            src: '<%= config.libraries %>/win/ffmpegsumo.dll'
-            dest: 'build/releases/niceplay/win/niceplay/ffmpegsumo.dll'
-            flatten: true
-          }
-          {
-            src: '<%= config.libraries %>/win/ffmpegsumo.dll'
-            dest: 'build/cache/win/<%= nodewebkit.build.options.version %>/ffmpegsumo.dll'
-            flatten: true
-          }
+          # {
+          #   src: '<%= config.libraries %>/win/ffmpegsumo.dll'
+          #   dest: 'build/releases/niceplay/win/niceplay/ffmpegsumo.dll'
+          #   flatten: true
+          # }
+          # {
+          #   src: '<%= config.libraries %>/win/ffmpegsumo.dll'
+          #   dest: 'build/cache/win/<%= nodewebkit.build.options.version %>/ffmpegsumo.dll'
+          #   flatten: true
+          # }
           {
             src: '<%= config.libraries %>/mac/ffmpegsumo.so'
             dest: 'build/releases/niceplay/mac/niceplay.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so'
@@ -165,7 +165,6 @@ module.exports = (grunt) ->
   grunt.registerTask 'build', [
     # 'clean:build'
     'build:src'
-    'transfo:node-modules'
     'nodewebkit:build'
     'transfo:ffmpeg'
   ]

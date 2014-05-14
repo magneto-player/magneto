@@ -43,8 +43,11 @@ class MenuBar
     @_appendMenu {
       label: 'File'
       items: [
-        label: 'Open...'
+        label: 'Open a file'
         click: -> niceplay.fileInput.openFileDialogs()
+      ,
+        label: 'Open an URL'
+        click: -> niceplay.fileInput.openPrompt()
       ,
         type: 'separator'
       ,

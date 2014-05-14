@@ -22,6 +22,9 @@ class FileInput
 
     $file.trigger 'click'
 
+  openPrompt: ->
+    videoUrl = window.prompt 'URL :'
+    @newFile videoUrl if videoUrl?.length
 
   _parseArgv: ->
     argv = nw.gui.App.argv

@@ -17,7 +17,7 @@ class Package
 
   constructor: (@pkgDirPath, @pkg) ->
     @pkg ?= Package.readPackageJSON(pkgDirPath)
-    @name = @pkg.name
+    @name = @pkg.name.replace(/^niceplay-pkg-/, '')
 
   activate: ->
     @_require()

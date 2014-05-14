@@ -19,10 +19,16 @@ class PackageManager
     @activatePackage pkgName for pkgName of @packages
 
   activatePackage: (pkgName) ->
-    @packages[pkgName]?.activate()
+    pkg = @packages[pkgName]
+    if pkg
+      pkg.activate()
+      niceplay.emit 'package:enable', pkg
 
   desactivatePackage: (pkgName) ->
-    @packages[pkgName]?.desactivate()
+    pkg = @packages[pkgName]
+    if pkg
+      pkg.desactivate()
+      niceplay.emit 'package:disable', pkg
 
   _initPackage: (path) ->
     pkg = new Package(path)

@@ -2,25 +2,21 @@
   "name": "magneto",
   "version": "0.0.0",
   "description": "Open-source player.",
+  "author": "Loic Mahieu <mahieuloic@gmail.com>",
+  "license": "GPL-3.0",
+  "keywords": ["video", "player"],
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "start": "grunt server",
-    "test": "grunt test"
+    "start": "grunt start",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:magneto-player/magneto.git"
   },
-  "keywords": [
-    "nice",
-    "player",
-    "open-source",
-    "video"
-  ],
-  "author": "iGLOO",
-  "license": "ISC",
+  "bugs": "https://github.com/magneto-player/magneto/issues",
   "devDependencies": {
     "coffee-script": "^1.7.1",
     "grunt": "^0.4.4",

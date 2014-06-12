@@ -12,13 +12,13 @@ class Window
     @_win.on 'enter-fullscreen', => @_$html.addClass @fullScreenClass
     @_win.on 'leave-fullscreen', => @_$html.removeClass @fullScreenClass
 
-    niceplay.on '!window:maximize', @maximize
-    niceplay.on '!window:minimize', @minimize
-    niceplay.on '!window:toggle-fullscreen', @toggleFullscreen
-    niceplay.on '!window:enter-fullscreen', @enterFullscreen
-    niceplay.on '!window:leave-fullscreen', @leaveFullscreen
-    niceplay.on '!window:exit', @exit
-    niceplay.on '!window:set-title', @setTitle
+    magneto.on '!window:maximize', @maximize
+    magneto.on '!window:minimize', @minimize
+    magneto.on '!window:toggle-fullscreen', @toggleFullscreen
+    magneto.on '!window:enter-fullscreen', @enterFullscreen
+    magneto.on '!window:leave-fullscreen', @leaveFullscreen
+    magneto.on '!window:exit', @exit
+    magneto.on '!window:set-title', @setTitle
 
     windowState = new WindowState @_win
 

@@ -8,6 +8,6 @@ class PackageFinder
     @_findPackages()
 
   _findPackages: ->
-    @paths = glob.sync('niceplay-pkg-*', cwd: @_dir).map (f) => path.join(@_dir, f)
+    @paths = glob.sync('magneto-pkg-*', cwd: @_dir).map (f) => path.join(@_dir, f)
 
 module.exports = PackageFinder

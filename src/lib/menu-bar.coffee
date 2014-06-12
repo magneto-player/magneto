@@ -44,10 +44,10 @@ class MenuBar
       label: 'File'
       items: [
         label: 'Open a file'
-        click: -> niceplay.fileInput.openFileDialogs()
+        click: -> magneto.fileInput.openFileDialogs()
       ,
         label: 'Open an URL'
-        click: -> niceplay.fileInput.openPrompt()
+        click: -> magneto.fileInput.openPrompt()
       ,
         type: 'separator'
       ,

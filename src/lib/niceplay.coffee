@@ -3,7 +3,7 @@
 osenv = require 'osenv'
 path = require 'path'
 
-class NicePlay extends Model
+class Magneto extends Model
   @::Views =
     View: require './views/view'
 
@@ -19,7 +19,7 @@ class NicePlay extends Model
     require './debug/exception-handler'
 
     # Require components
-    Config = require 'niceplay-config'
+    Config = require 'magneto-config'
     PackageManager = require './package/package-manager'
     Stylesheets = require './stylesheets'
     Window = require './window'
@@ -29,7 +29,7 @@ class NicePlay extends Model
     MenuBar = require './menu-bar'
 
     # Init components
-    envDir = path.join osenv.home(), '.niceplay'
+    envDir = path.join osenv.home(), '.magneto'
 
     @config = new Config(
       dir: envDir
@@ -56,7 +56,7 @@ class NicePlay extends Model
     # On ready
     $ = require 'jquery'
     $ =>
-      @stylesheets.require('niceplay-style/dist/styles/main')
+      @stylesheets.require('magneto-style/dist/styles/main')
 
       @workspace.appendTo 'body'
 
@@ -65,4 +65,4 @@ class NicePlay extends Model
 
       @emit('ready')
 
-module.exports = NicePlay
+module.exports = Magneto

@@ -51,7 +51,7 @@ class WindowState
       @win.close true
 
   initWindowState: () =>
-    @winState = niceplay.config.get 'window.state'
+    @winState = magneto.config.get 'window.state'
 
     if @winState
       @currWinMode = @winState.mode
@@ -98,4 +98,4 @@ class WindowState
 
   saveWindowState: () =>
     @dumpWindowState()
-    niceplay.config.set 'window.state', @winState, true
+    magneto.config.set 'window.state', @winState, true

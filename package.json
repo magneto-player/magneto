@@ -1,5 +1,5 @@
 {
-  "name": "niceplay",
+  "name": "magneto",
   "version": "0.0.0",
   "description": "Open-source player.",
   "directories": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.igloo.be:niceplay/niceplay.git"
+    "url": "git@github.com:magneto-player/magneto.git"
   },
   "keywords": [
     "nice",
@@ -47,13 +47,13 @@
     "glob": "^3.2.9",
     "jquery": "^2.1.0",
     "jwerty": "git://github.com/loicmahieu/jwerty",
-    "niceplay-config": "0.0.4",
-    "niceplay-pkg-error-handler": "0.0.1",
-    "niceplay-pkg-menu": "0.0.1",
-    "niceplay-pkg-player": "0.0.5",
-    "niceplay-pkg-shortcuts": "0.0.1",
-    "niceplay-pkg-status-bar": "0.0.2",
-    "niceplay-style": "0.0.5",
+    "magneto-config": "0.0.4",
+    "magneto-pkg-error-handler": "0.0.1",
+    "magneto-pkg-menu": "0.0.1",
+    "magneto-pkg-player": "0.0.5",
+    "magneto-pkg-shortcuts": "0.0.1",
+    "magneto-pkg-status-bar": "0.0.2",
+    "magneto-style": "0.0.5",
     "osenv": "0.0.3",
     "season": "^2.0.0",
     "space-pen": "^3.1.2",

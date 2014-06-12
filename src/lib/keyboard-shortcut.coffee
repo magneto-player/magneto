@@ -5,13 +5,13 @@ class KeyboardShortcut
   constructor: ->
 
     jwerty.key 'space', ->
-      niceplay.emit '!player:toggle'
+      magneto.emit '!player:toggle'
 
     jwerty.key 'esc', ->
-      niceplay.emit '!window:leave-fullscreen'
+      magneto.emit '!window:leave-fullscreen'
 
     jwerty.key 'm', ->
-      niceplay.emit '!menu:toggle'
+      magneto.emit '!menu:toggle'
 
 
 

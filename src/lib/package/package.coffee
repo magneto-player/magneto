@@ -17,7 +17,7 @@ class Package
 
   constructor: (@pkgDirPath, @pkg) ->
     @pkg ?= Package.readPackageJSON(pkgDirPath)
-    @name = @pkg.name.replace(/^niceplay-pkg-/, '')
+    @name = @pkg.name.replace(/^magneto-pkg-/, '')
 
   activate: ->
     @_require()

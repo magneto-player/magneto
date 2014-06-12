@@ -22,13 +22,13 @@ class PackageManager
     pkg = @packages[pkgName]
     if pkg
       pkg.activate()
-      niceplay.emit 'package:enable', pkg
+      magneto.emit 'package:enable', pkg
 
   desactivatePackage: (pkgName) ->
     pkg = @packages[pkgName]
     if pkg
       pkg.desactivate()
-      niceplay.emit 'package:disable', pkg
+      magneto.emit 'package:disable', pkg
 
   _initPackage: (path) ->
     pkg = new Package(path)

@@ -8,9 +8,9 @@ window.nw = global.nw =
 
 
 # Initialize application
-NicePlay = require './lib/niceplay'
-niceplay = new NicePlay()
+Magneto = require './lib/magneto'
+magneto = new Magneto()
 
-window.niceplay = global.niceplay = niceplay
+window.magneto = global.magneto = magneto
 
-niceplay.initialize()
+magneto.initialize()

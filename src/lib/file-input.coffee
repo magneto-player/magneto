@@ -6,11 +6,11 @@ class FileInput
     @_listenOpen()
     @_listenDrag()
 
-    niceplay.on 'ready', =>
+    magneto.on 'ready', =>
       @_parseArgv()
 
   newFile: (path) ->
-    niceplay.emit 'file:new', path
+    magneto.emit 'file:new', path
 
   openFileDialogs: ->
     $ = $ or require 'jquery'

@@ -1,7 +1,6 @@
 
 module.exports =
 class WindowState
-
   constructor: (win)->
     @win = win
     @isMaximizationEvent = false

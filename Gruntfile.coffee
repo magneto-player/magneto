@@ -2,7 +2,7 @@ module.exports = (grunt) ->
   require('load-grunt-tasks')(grunt)
   _ = require 'lodash'
 
-  buildPlatforms = parseBuildPlatforms(grunt.option('platforms'));
+  buildPlatforms = parseBuildPlatforms grunt.option('platforms')
 
   pkg = require('./package.json')
 
@@ -31,7 +31,7 @@ module.exports = (grunt) ->
         # Mac only
         # mac_icns: './images/popcorntime.icns' # Path to the Mac icon file
         credits: './credits.html'
-      src: [ # Your node-webkit app './**/*'
+      src: [
         './<%= config.lib %>/**'
       ].concat(
         _.keys(pkg.dependencies).map((k) -> './node_modules/' + k + '/**/*')
